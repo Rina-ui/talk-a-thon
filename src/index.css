@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-ink: #0c0c0e;
+  --color-paper: #d9d9dc;
+  --color-accent: #9bbcff;
+  --animate-fade-in: fade-in 0.35s ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Big rounded container holding the whole app */
+.shell {
+  background: linear-gradient(145deg, #ebebed, #d3d3d8);
+  border-radius: 48px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 30px 80px rgba(0, 0, 0, 0.14);
+}
+
+/* Soft light surface (cards, round buttons, sidebar) */
+.neo {
+  background: linear-gradient(160deg, #f7f7f8, #e4e4e8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 10px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* Dark hero panel with a cold blue light, like a studio shot */
+.hero {
+  background:
+          radial-gradient(70% 55% at 30% 18%, rgba(76, 120, 200, 0.55) 0%, rgba(76, 120, 200, 0) 70%),
+          radial-gradient(90% 70% at 90% 100%, rgba(40, 70, 130, 0.35) 0%, rgba(40, 70, 130, 0) 70%),
+          linear-gradient(180deg, #0a0e17 0%, #05070b 100%);
+}
+
+/* Frosted glass */
+.glass {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
