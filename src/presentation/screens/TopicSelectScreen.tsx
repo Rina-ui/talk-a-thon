@@ -47,7 +47,7 @@ export function TopicSelectScreen({ topics, pickTopic, recognizerSupported, onSt
           </div>
 
           <div className="relative z-10 grid flex-1 place-items-center py-8">
-            <TopicWheel topics={topics} rotation={rotation} spinning={spinning} />
+            <TopicWheel topics={topics} rotation={rotation} spinning={spinning} activeId={spinning ? null : topic.id} />
           </div>
 
           <div className="glass relative z-10 flex flex-col gap-4 rounded-[32px] p-5 sm:flex-row sm:items-end sm:justify-between">
