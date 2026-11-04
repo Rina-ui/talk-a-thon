@@ -29,8 +29,14 @@ body {
 /* Big rounded container holding the whole app */
 .shell {
   background: linear-gradient(145deg, #ebebed, #d3d3d8);
-  border-radius: 48px;
+  border-radius: 28px;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 30px 80px rgba(0, 0, 0, 0.14);
+}
+
+@media (min-width: 640px) {
+  .shell {
+    border-radius: 48px;
+  }
 }
 
 /* Soft light surface (cards, round buttons, sidebar) */

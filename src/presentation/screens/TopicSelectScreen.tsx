@@ -26,7 +26,7 @@ export function TopicSelectScreen({ topics, pickTopic, recognizerSupported, onSt
   return (
       <div className="grid animate-fade-in gap-4 lg:grid-cols-[1fr_300px]">
         {/* Hero */}
-        <section className="hero relative flex min-h-[660px] flex-col overflow-hidden rounded-[40px] p-4 text-white sm:p-6">
+        <section className="hero relative flex min-h-140 sm:min-h-165 flex-col overflow-hidden rounded-[28px] sm:rounded-[40px] p-4 text-white sm:p-6">
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
             <div role="radiogroup" aria-label="Speaking time" className="flex gap-2">
               {DURATION_OPTIONS_SEC.map((sec) => (
@@ -50,7 +50,7 @@ export function TopicSelectScreen({ topics, pickTopic, recognizerSupported, onSt
             <TopicWheel topics={topics} rotation={rotation} spinning={spinning} activeId={spinning ? null : topic.id} />
           </div>
 
-          <div className="glass relative z-10 flex flex-col gap-4 rounded-[32px] p-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="glass relative z-10 flex flex-col gap-4 rounded-[24px] sm:rounded-[32px] p-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
               <p className="text-xs font-bold uppercase tracking-widest text-white/60">Your topic</p>
               <h2 className="mt-1 text-2xl font-extrabold uppercase leading-tight sm:text-3xl">
@@ -77,7 +77,7 @@ export function TopicSelectScreen({ topics, pickTopic, recognizerSupported, onSt
         </section>
 
         {/* Right column */}
-        <div className="flex flex-col gap-4">
+        <div className="grid gap-4 sm:grid-cols-3 lg:flex lg:flex-col">
           <LightCard title="Speaking goal" action={<ArrowBadge />}>
             <svg viewBox="0 0 200 60" className="mb-2 h-14 w-full" aria-hidden>
               <path d="M0 50 C30 48 45 20 80 26 S130 12 160 18 S190 8 200 10" fill="none" stroke="currentColor" strokeWidth="1.5" />

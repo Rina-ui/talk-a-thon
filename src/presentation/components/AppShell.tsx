@@ -12,9 +12,9 @@ interface Props {
 
 export function AppShell({ soundOn, onToggleSound, onHome, inSession, children }: Props) {
     return (
-        <div className="min-h-screen bg-paper p-2 sm:p-5">
+        <div className="min-h-dvh bg-paper p-2 sm:p-5">
             <div className="shell mx-auto flex w-full max-w-310 flex-col gap-4 p-3 sm:p-4 md:flex-row">
-                <aside className="neo flex shrink-0 items-center justify-between gap-3 rounded-[36px] p-3 md:w-24 md:flex-col md:py-5">
+                <aside className="neo flex shrink-0 items-center justify-between gap-3 rounded-[28px] sm:rounded-[36px] p-3 md:w-24 md:flex-col md:py-5">
                     <div className="flex flex-col items-center gap-1">
                         <div className="grid h-14 w-14 place-items-center rounded-full bg-ink text-white" aria-hidden>
                             <Flame className="h-6 w-6" />

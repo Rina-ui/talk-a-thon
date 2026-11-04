@@ -14,6 +14,16 @@ interface Props {
   onFinished: (result: SessionResult) => void;
 }
 
+const MIC_MESSAGES: Record<string, string> = {
+  'not-allowed': 'Microphone access was denied. Allow it in your browser settings, then start a new round.',
+  'service-not-allowed': 'Microphone access was denied. Allow it in your browser settings, then start a new round.',
+  'audio-capture': 'No microphone found. Check that one is plugged in and selected in your system settings.',
+  network: 'Speech recognition could not reach its server. It needs an internet connection and does not work in Brave or Firefox: try Chrome or Edge.',
+  unsupported: 'This browser has no speech recognition. Use Chrome, Edge or Safari.',
+  'start-failed': 'Speech recognition could not start. Reload the page and try again.',
+  'meter-unavailable': 'The microphone could not be opened. Check the browser permission and close other apps using the mic.',
+};
+
 const RING_R = 120;
 const RING_LEN = 2 * Math.PI * RING_R;
 
@@ -31,12 +41,13 @@ export function SessionScreen({ topic, create, onFinished }: Props) {
   if (!state) return null;
 
   const progress = state.speechGoalMs > 0 ? Math.min(1, state.activeSpeechMs / state.speechGoalMs) : 0;
+  const micMessage = state.micError ? (MIC_MESSAGES[state.micError] ?? `Speech recognition error: ${state.micError}`) : undefined;
   const ringColor = state.frozen ? '#ff9a9a' : 'var(--color-accent)';
 
   return (
       <div className="grid animate-fade-in gap-4 lg:grid-cols-[1fr_300px]">
         {/* Hero */}
-        <section className="hero relative flex min-h-[660px] flex-col overflow-hidden rounded-[40px] p-4 text-white sm:p-6">
+        <section className="hero relative flex min-h-140 sm:min-h-165 flex-col overflow-hidden rounded-[28px] sm:rounded-[40px] p-4 text-white sm:p-6">
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
             <PillLabel>
               {topic.name}
@@ -52,14 +63,14 @@ export function SessionScreen({ topic, create, onFinished }: Props) {
             <Pill onClick={finish}>Finish</Pill>
           </div>
 
-          {state.micError === 'not-allowed' && (
+          {micMessage && (
               <p role="alert" className="glass relative z-10 mt-4 rounded-2xl px-4 py-3 text-sm text-red-200">
-                Microphone access was denied. Allow it in your browser settings, then start a new round.
+                {micMessage}
               </p>
           )}
 
           <div className="relative z-10 grid flex-1 place-items-center py-8">
-            <div className="relative h-[280px] w-[280px] sm:h-[320px] sm:w-[320px]">
+            <div className="relative aspect-square w-[min(72vw,20rem)]">
               <svg viewBox="0 0 280 280" className="h-full w-full -rotate-90" aria-hidden>
                 <circle cx="140" cy="140" r={RING_R} fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="10" />
                 <circle
@@ -84,13 +95,13 @@ export function SessionScreen({ topic, create, onFinished }: Props) {
             </div>
           </div>
 
-          <div className="glass relative z-10 rounded-[32px] p-5">
+          <div className="glass relative z-10 rounded-3xl sm:rounded-4xl p-5">
             <TranscriptPanel text={state.transcript} />
           </div>
         </section>
 
         {/* Right column */}
-        <div className="flex flex-col gap-4">
+        <div className="grid gap-4 sm:grid-cols-3 lg:flex lg:flex-col">
           <LightCard title="Total elapsed" action={<ArrowBadge />}>
             <p className="text-4xl font-extrabold tabular-nums">{formatClock(state.elapsedMs)}</p>
             <p className="text-sm text-ink/60">

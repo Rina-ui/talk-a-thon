@@ -25,7 +25,7 @@ export function TopicWheel({ topics, rotation, spinning, activeId }: Props) {
     const slice = 360 / topics.length;
 
     return (
-        <div className="relative mx-auto h-72 w-72 sm:h-80 sm:w-80" role="img" aria-label="Wheel of topics">
+        <div className="relative mx-auto aspect-square w-[min(76vw,20rem)]" role="img" aria-label="Wheel of topics">
             <svg viewBox="0 0 20 14" className="absolute -top-3 left-1/2 z-20 h-4 w-6 -translate-x-1/2 drop-shadow" aria-hidden>
                 <polygon points="0,0 20,0 10,14" fill={ACCENT} />
             </svg>
@@ -77,7 +77,7 @@ export function TopicWheel({ topics, rotation, spinning, activeId }: Props) {
                 <circle cx={C} cy={C} r={R} fill="url(#wheel-depth)" pointerEvents="none" />
             </svg>
 
-            <div className="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-ink shadow-lg">
+            <div className="absolute inset-0 m-auto flex h-14 w-14 items-center sm:h-16 sm:w-16 justify-center rounded-full border border-white/20 bg-ink shadow-lg">
                 <Flame className="h-7 w-7 text-white" />
             </div>
         </div>

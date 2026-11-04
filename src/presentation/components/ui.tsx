@@ -88,7 +88,7 @@ function CardHeader({ title, action }: Pick<CardProps, 'title' | 'action'>) {
 
 export function LightCard({ title, action, className = '', children }: CardProps) {
     return (
-        <section className={`neo rounded-4xl p-5 ${className}`}>
+        <section className={`neo rounded-[24px] sm:rounded-[32px] p-5 ${className}`}>
             <CardHeader title={title} action={action} />
             {children}
         </section>
@@ -97,7 +97,7 @@ export function LightCard({ title, action, className = '', children }: CardProps
 
 export function DarkCard({ title, action, className = '', children }: CardProps) {
     return (
-        <section className={`rounded-4xl bg-ink p-5 text-white ${className}`}>
+        <section className={`rounded-[24px] sm:rounded-[32px] bg-ink p-5 text-white ${className}`}>
             <CardHeader title={title} action={action} />
             {children}
         </section>
@@ -109,7 +109,7 @@ const FACTORS = Array.from({ length: 32 }, (_, i) => 0.35 + 0.65 * Math.abs(Math
 /** Decorative equalizer bars; `level` (0-100) makes them live. */
 export function LiveBars({ level, active = true }: { level: number; active?: boolean }) {
     return (
-        <div className="flex h-20 items-end gap-0.75" aria-hidden>
+        <div className="flex h-20 items-end gap-[3px]" aria-hidden>
             {FACTORS.map((factor, i) => (
                 <span
                     key={i}
@@ -123,7 +123,7 @@ export function LiveBars({ level, active = true }: { level: number; active?: boo
 
 export function StaticBars() {
     return (
-        <div className="flex h-14 items-end gap-0.75" aria-hidden>
+        <div className="flex h-14 items-end gap-[3px]" aria-hidden>
             {FACTORS.map((factor, i) => (
                 <span key={i} className="w-full rounded-full bg-white/70" style={{ height: `${25 + factor * 75}%` }} />
             ))}

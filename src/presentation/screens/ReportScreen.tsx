@@ -15,7 +15,7 @@ export function ReportScreen({ report, onReplay }: Props) {
         <div className="flex animate-fade-in flex-col gap-4">
             <div className="grid gap-4 lg:grid-cols-[1fr_300px]">
                 {/* Hero */}
-                <section className="hero relative flex min-h-[520px] flex-col overflow-hidden rounded-[40px] p-4 text-white sm:p-6">
+                <section className="hero relative flex min-h-110 sm:min-h-130 flex-col overflow-hidden rounded-[28px] sm:rounded-[40px] p-4 text-white sm:p-6">
                     <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
                         <PillLabel>
                             {topic.name}
@@ -44,7 +44,7 @@ export function ReportScreen({ report, onReplay }: Props) {
                     </div>
 
                     {analysis && (
-                        <div className="glass relative z-10 rounded-[32px] p-5">
+                        <div className="glass relative z-10 rounded-3xl sm:rounded-4xl p-5">
                             <p className="text-xs font-bold uppercase tracking-widest text-white/60">Summary</p>
                             <p className="mt-1 text-base leading-relaxed">{analysis.summary}</p>
                         </div>
@@ -52,7 +52,7 @@ export function ReportScreen({ report, onReplay }: Props) {
                 </section>
 
                 {/* Stats */}
-                <div className="flex flex-col gap-4">
+                <div className="grid gap-4 sm:grid-cols-3 lg:flex lg:flex-col">
                     <LightCard title="Words / min" action={<ArrowBadge />}>
                         <p className="text-4xl font-extrabold tabular-nums">{metrics.wordsPerMinute}</p>
                         <p className="text-sm text-ink/60">{metrics.totalWords} words in total</p>
